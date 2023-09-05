@@ -1,4 +1,6 @@
-export default function createOptions(method = "GET", bodyData = null, headers = {}) {
+import getToken from "../helpers/getToken.js";
+
+export default function createOptions(method = "GET", bodyData = null, headers = {}, includeToken = false) {
 	const options = {
 		method: method,
 		headers: {
@@ -6,6 +8,13 @@ export default function createOptions(method = "GET", bodyData = null, headers =
 			...headers,
 		},
 	};
+
+	if (includeToken) {
+		const token = getToken();
+		if (token) {
+			options.headers.Authorization = `Bearer ${token}`;
+		}
+	}
 
 	if (bodyData) {
 		options.body = JSON.stringify(bodyData);
