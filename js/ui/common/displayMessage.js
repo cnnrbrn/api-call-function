@@ -5,9 +5,11 @@ export function displayMessage(type, message, target) {
 		container = document.querySelector(target);
 	}
 
+	const displayError = message.replace(/\n/g, "<br>");
+
 	container.innerHTML = `
     <div class="alert alert-${type}">
-      ${message}
+      ${displayError}
     </div>
   `;
 }

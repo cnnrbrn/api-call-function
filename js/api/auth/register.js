@@ -12,9 +12,15 @@ export async function register(data) {
 		body,
 	});
 
+	const json = await response.json();
+
 	if (response.ok) {
-		const json = await response.json();
 		return json;
+	}
+
+	if (json && json.errors && Array.isArray(json.errors)) {
+		const errorMessage = json.errors.map((error) => error.message).join("\n");
+		throw new Error(errorMessage);
 	}
 
 	throw new Error("There was an error registering");

@@ -13,10 +13,10 @@ export function setRegisterListener() {
 
 			try {
 				await register(profile);
-				displayMessage("success", "Registration successful! You can now log in", "#message");
+				displayMessage("success", 'Successfully registered. You can now <a href="#">log in</a>', "#message");
 				form.reset();
 			} catch (error) {
-				displayMessage("danger", error, "#message");
+				displayMessage("danger", error.message, "#message");
 				console.log(error);
 			}
 		});
