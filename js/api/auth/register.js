@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../constants/api.js";
+import handleErrors from "../handleErrors.js";
 
 export async function register(data) {
 	const url = `${BASE_URL}auth/register`;
@@ -18,10 +19,5 @@ export async function register(data) {
 		return json;
 	}
 
-	if (json && json.errors && Array.isArray(json.errors)) {
-		const errorMessage = json.errors.map((error) => error.message).join("\n");
-		throw new Error(errorMessage);
-	}
-
-	throw new Error("There was an error registering");
+	handleErrors(json);
 }

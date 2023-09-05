@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../constants/api.js";
+import handleErrors from "../handleErrors.js";
 
 export async function login(data) {
 	const url = `${BASE_URL}/auth/login`;
@@ -17,5 +18,5 @@ export async function login(data) {
 		return json;
 	}
 
-	throw new Error("There was an error logging in");
+	handleErrors(json);
 }

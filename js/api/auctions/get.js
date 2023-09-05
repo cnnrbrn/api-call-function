@@ -1,14 +1,15 @@
 import { BASE_URL } from "../../constants/api.js";
+import handleErrors from "../handleErrors.js";
 
 export async function get() {
 	const url = `${BASE_URL}listings`;
 	const response = await fetch(url);
-	console.log(response);
+
+	const json = await response.json();
 
 	if (response.ok) {
-		const json = await response.json();
 		return json;
 	}
 
-	throw new Error("There was an error fetching the auctions");
+	handleErrors(json);
 }

@@ -9,6 +9,6 @@ export async function getAuctions() {
 		const auctions = await api.get();
 		displayAuctions(auctions, container);
 	} catch (error) {
-		displayMessage("danger", error, container);
+		displayMessage("danger", error.message, container);
 	}
 }
