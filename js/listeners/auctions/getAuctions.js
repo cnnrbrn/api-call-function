@@ -17,11 +17,4 @@ export async function getAuctions() {
 	}
 
 	displayAuctions(data, container);
-
-	// try {
-	// 	const auctions = await api.get();
-	// 	displayAuctions(auctions, container);
-	// } catch (error) {
-	// 	displayMessage("danger", error.message, container);
-	// }
 }

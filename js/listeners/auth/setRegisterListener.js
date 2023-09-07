@@ -1,4 +1,3 @@
-// import { register } from "../../api/auth/index.js";
 import makeApiCall from "../../api/makeApiCall.js";
 import createOptions from "../../api/createOptions.js";
 import { displayMessage } from "../../ui/common/index.js";
@@ -27,15 +26,6 @@ export function setRegisterListener() {
 			displayMessage("success", `You have successfully registered, please <a href="/">login</a>.`, "#message");
 
 			form.reset();
-
-			// try {
-			// 	await register(profile);
-			// 	displayMessage("success", 'Successfully registered. You can now <a href="#">log in</a>', "#message");
-			// 	form.reset();
-			// } catch (error) {
-			// 	displayMessage("danger", error.message, "#message");
-			// 	console.log(error);
-			// }
 		});
 	}
 }
